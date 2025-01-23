@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+/* Aquí apareceían unos mensajes de "Unknow at rule @tailwind" en cada elemento pero el mensaje que aparece es simplemente una advertencia que se muestra en Visual Studio Code cuando no reconoce la directiva @tailwind en tus archivos CSS. Esto puede ser molesto, pero no afecta la funcionalidad de Tailwind CSS en el proyecto. Para resolver esta advertencia, se puede instalar el plugin Tailwind CSS IntelliSense. Una vez instalado, se necesita asociar el archivo CSS con Tailwind CSS. Hay que abrir el archivo CSS donde se importa Tailwind CSS, presionar Ctrl + Shift + P y busca Change Language Mode. Dentro de la barra de búsqueda, escribir tailwindcss y seleccionarlo. Ahora tu archivo CSS está asociado con Tailwind CSS y las advertencias deberían desaparecer. */
+/* ***************************************************************************************************************************** */
+
+/* This injects Tailwind's base styles and any base styles registered by plugins. */
+@tailwind base;
+
+/* This injects Tailwind's component classes and any component classes registered by plugins. */
+@tailwind components;
+
+/* This injects Tailwind's utility classes and any utility classes registered by plugins. */
+@tailwind utilities;
