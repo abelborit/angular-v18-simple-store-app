@@ -10,3 +10,11 @@
 
 /* This injects Tailwind's utility classes and any utility classes registered by plugins. */
 @tailwind utilities;
+
+:root {
+  color-scheme: dark ligth;
+}
+
+body {
+  @apply bg-neutral-800;
+}
