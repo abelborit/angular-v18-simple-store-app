@@ -4,7 +4,7 @@ import {
   HttpHeaders, // Clase para configurar headers personalizados (como Content-Type o tokens de autenticación).
 } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { environment } from '../../../environments/environment';
+// import { environment } from '../../../environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 

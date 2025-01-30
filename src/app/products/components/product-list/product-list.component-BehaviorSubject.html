@@ -1,0 +1,39 @@
+<!-- FORMA 1: híbrido que combina elementos reactivos y control directo sobre los datos -->
+<div *ngIf="products.length > 0; else loading">
+  <div *ngFor="let product of products">
+    <h3>{{ product.title }}</h3>
+    <p>{{ product.description }}</p>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Loading products...</p>
+</ng-template>
+
+<!-- ********************************************************************************************************* -->
+
+<!-- FORMA 2: Usar directamente en la plantilla (Angular Async Pipe) -->
+<!-- <div *ngIf="products$ | async as products; else loading">
+  <div *ngFor="let product of products">
+    <h3>{{ product.title }}</h3>
+    <p>{{ product.description }}</p>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Loading products...</p>
+</ng-template> -->
+
+<!-- ********************************************************************************************************* -->
+
+<!-- FORMA 3: Usar los productos como referencia directa en el componente -->
+<!-- <div *ngIf="products.length > 0; else loading">
+  <div *ngFor="let product of products">
+    <h3>{{ product.title }}</h3>
+    <p>{{ product.description }}</p>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Loading products...</p>
+</ng-template> -->
