@@ -1,1 +1,40 @@
-<p>product-list works!</p>
+<!-- FORMA 1: usando get con "productsSignal()" y FORMA 2: usando get con "getProductsSnapshot()" -->
+<!-- <div *ngIf="products.length > 0; else loading">
+  <div *ngFor="let product of products">
+    <h3>{{ product.title }}</h3>
+    <p>{{ product.description }}</p>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Loading products...</p>
+</ng-template> -->
+
+<!-- FORMA 3: usando computed con "productsSignal()" para mantener la reactividad del Signal -->
+<!-- <div *ngIf="products().length > 0; else loading">
+  <div *ngFor="let product of products()">
+    <h3>{{ product.title }}</h3>
+    <p>{{ product.description }}</p>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Loading products...</p>
+</ng-template> -->
+
+<!-- Nueva Sintaxis de Angular -->
+@if (products.length > 0) {
+<div>
+  @for (product of products; track product.id) {
+
+  <div>
+    <h3>{{ product.title }}</h3>
+    <p>{{ product.description }}</p>
+  </div>
+  }
+</div>
+} @else {
+<div>
+  <p>Loading products...</p>
+</div>
+}
