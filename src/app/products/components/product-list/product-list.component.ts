@@ -32,6 +32,11 @@ import { ProductCardComponent } from '../product-card/product-card.component';
 export class ProductListComponent {
   public productsState = inject(ProductsStateService);
 
+  public handleChangePage() {
+    const newPage = this.productsState.state().page + 1;
+    this.productsState.changePage$.next(newPage);
+  }
+
   constructor() {
     console.log('ProductsState:', this.productsState.state());
   }

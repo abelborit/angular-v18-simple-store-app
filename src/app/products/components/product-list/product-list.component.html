@@ -4,6 +4,16 @@
   <!-- Recordar que state es una Signal así que se necesita llamarlo como función state() -->
   <!-- aquí puede ser que de unos warnings pero parece que hace conflicto con los archivos de "product-list.component-BehaviorSubject" y "product-list.component-Signals" pero al eliminarlos, porque no se utilizan y solo están como ejemplo, entonces ya desaparecen los warnings -->
   @if (productsState.state().status !== "loading") {
+    <div class="flex justify-end">
+      <button
+        (click)="handleChangePage()"
+        type="button"
+        class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 me-2 outline-none"
+      >
+        More Products
+      </button>
+    </div>
+
     <div
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4"
     >

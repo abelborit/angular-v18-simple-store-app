@@ -10,9 +10,14 @@ import { Observable } from 'rxjs';
 // })
 @Injectable()
 export class ProductsService extends BaseHttpService {
+  private LIMIT = 5;
   private readonly baseApiUrl = environment.BASE_API_URL;
 
-  public getAllProducts(): Observable<ProductInterface[]> {
-    return this.getBaseHttp<ProductInterface[]>(this.baseApiUrl, 'products');
+  public getAllProducts(page: number): Observable<ProductInterface[]> {
+    return this.getBaseHttp<ProductInterface[]>(this.baseApiUrl, 'products', {
+      params: {
+        limit: page * this.LIMIT,
+      },
+    });
   }
 }
