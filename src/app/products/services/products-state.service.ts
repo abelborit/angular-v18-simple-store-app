@@ -2,8 +2,8 @@ import { inject, Injectable } from '@angular/core';
 import { signalSlice } from 'ngxtension/signal-slice';
 import { ProductInterface } from '../../shared/interfaces/product.interface';
 import { ProductsService } from './products.service';
-import { map, startWith, switchMap } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+import { of, Subject } from 'rxjs';
 
 interface ProductsState {
   products: ProductInterface[];
@@ -46,13 +46,20 @@ export class ProductsStateService {
       products,
       status: 'success' as const,
     })),
+
+    catchError(() => {
+      return of({
+        products: [],
+        status: 'error' as const,
+      });
+    }),
   );
 
   /* signalSlice está inspirada vagamente en la API createSlice de Redux Toolkit. La idea general es que permite crear de forma declarativa una "porción" o "slice" de estado y este estado estará disponible como una señal de solo lectura. */
   state = signalSlice({
     initialState: this.initialState,
 
-    /* Una forma de actualizar el estado es mediante el uso de sources. Estos están pensados ​​para ser utilizados para "fuentes automáticas" o "auto sources", es decir, flujos observables u "observable" que se emitirán automáticamente como un http.get(). Aunque también funcionará con un Subject, se recomienda que se utilice un actionSource para estas actualizaciones de estado de estilo imperativo. */
+    /* Una forma de actualizar el estado es mediante el uso de sources. Estos están pensados para ser utilizados para "fuentes automáticas" o "auto sources", es decir, flujos observables u "observable" que se emitirán automáticamente como un http.get(). Aunque también funcionará con un Subject, se recomienda que se utilice un actionSource para estas actualizaciones de estado de estilo imperativo. */
     sources: [
       this.changePage$.pipe(
         map((page) => ({
