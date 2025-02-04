@@ -1,40 +1,18 @@
-<!-- FORMA 1: usando get con "productsSignal()" y FORMA 2: usando get con "getProductsSnapshot()" -->
-<!-- <div *ngIf="products.length > 0; else loading">
-  <div *ngFor="let product of products">
-    <h3>{{ product.title }}</h3>
-    <p>{{ product.description }}</p>
-  </div>
-</div>
+<!-- {{productsState.state.products() | json}} -->
 
-<ng-template #loading>
-  <p>Loading products...</p>
-</ng-template> -->
-
-<!-- FORMA 3: usando computed con "productsSignal()" para mantener la reactividad del Signal -->
-<!-- <div *ngIf="products().length > 0; else loading">
-  <div *ngFor="let product of products()">
-    <h3>{{ product.title }}</h3>
-    <p>{{ product.description }}</p>
-  </div>
-</div>
-
-<ng-template #loading>
-  <p>Loading products...</p>
-</ng-template> -->
-
-<!-- Nueva Sintaxis de Angular -->
-@if (products.length > 0) {
-<div>
-  @for (product of products; track product.id) {
-
-  <div>
-    <h3>{{ product.title }}</h3>
-    <p>{{ product.description }}</p>
-  </div>
+<div class="mx-auto max-w-screen-xl">
+  <!-- Recordar que state es una Signal así que se necesita llamarlo como función state() -->
+  @if (productsState.state().status !== "loading") {
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4"
+    >
+      @for (product of productsState.state().products; track product.id) {
+        <app-product-card class="w-full" [productInfo]="product" />
+      }
+    </div>
+  } @else {
+    <div class="flex justify-center items-center h-40">
+      <p class="text-gray-500 text-lg">Loading products...</p>
+    </div>
   }
 </div>
-} @else {
-<div>
-  <p>Loading products...</p>
-</div>
-}
