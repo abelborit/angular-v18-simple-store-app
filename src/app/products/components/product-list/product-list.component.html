@@ -2,6 +2,7 @@
 
 <div class="mx-auto max-w-screen-xl">
   <!-- Recordar que state es una Signal así que se necesita llamarlo como función state() -->
+  <!-- aquí puede ser que de unos warnings pero parece que hace conflicto con los archivos de "product-list.component-BehaviorSubject" y "product-list.component-Signals" pero al eliminarlos, porque no se utilizan y solo están como ejemplo, entonces ya desaparecen los warnings -->
   @if (productsState.state().status !== "loading") {
     <div
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4"
